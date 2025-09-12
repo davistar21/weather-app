@@ -3,17 +3,44 @@ const App = () => {
     <div>
       <header>
         <img src="/images/logo.svg" alt="" />
-        <div>
-          <img src="" alt="" />
-          Units
+        <div className="dropdown">
+          <button className="dropdown-toggle">
+            <img src="/images/icon-units.svg" alt="" />
+            Units
+            <img src="/images/icon-dropdown.svg" alt="" />
+          </button>
+          <div className="dropdown-menu inactive">
+            <div className="menu-group">
+              <div className="menu-item">Switch to Imperial</div>
+            </div>
+            <div className="menu-group">
+              <div className="menu-label">Temperature</div>
+              <div className="menu-item selected">Celsius (°C)</div>
+              <div className="menu-item">Fahrenheit (°F)</div>
+            </div>
+            <div className="menu-group">
+              <div className="menu-label">Wind Speed</div>
+              <div className="menu-item selected">km/h</div>
+              <div className="menu-item">mph</div>
+            </div>
+            <div className="menu-group">
+              <div className="menu-label">Precipitation</div>
+              <div className="menu-item selected">Millimeters (mm)</div>
+              <div className="menu-item">Inches (in)</div>
+            </div>
+          </div>
         </div>
       </header>
+
       <main>
         <section className="entry-message">
           How's the sky looking today?
         </section>
         <section className="search-box">
-          <input type="text" placeholder="Search for a place..." />
+          <div className="input-wrapper">
+            <img src="/images/icon-search.svg" alt="" />
+            <input type="text" placeholder="Search for a place..." />
+          </div>
           <button>Search</button>
         </section>
         <section className="weather-card">
@@ -42,67 +69,78 @@ const App = () => {
           </div>
         </section>
         <section className="daily-forecast">
-          <article>
-            <h3>Tue</h3>
-            <img src="images/icon-rain.webp" alt="" />
-            <div>
-              <span>20&deg;</span>
-              <span>14&deg;</span>
-            </div>
-          </article>
-          <article>
-            <h3>Tue</h3>
-            <img src="images/icon-rain.webp" alt="" />
-            <div>
-              <span>20&deg;</span>
-              <span>14&deg;</span>
-            </div>
-          </article>
-          <article>
-            <h3>Tue</h3>
-            <img src="images/icon-rain.webp" alt="" />
-            <div>
-              <span>20&deg;</span>
-              <span>14&deg;</span>
-            </div>
-          </article>
-          <article>
-            <h3>Tue</h3>
-            <img src="images/icon-rain.webp" alt="" />
-            <div>
-              <span>20&deg;</span>
-              <span>14&deg;</span>
-            </div>
-          </article>
-          <article>
-            <h3>Tue</h3>
-            <img src="images/icon-rain.webp" alt="" />
-            <div>
-              <span>20&deg;</span>
-              <span>14&deg;</span>
-            </div>
-          </article>
-          <article>
-            <h3>Tue</h3>
-            <img src="images/icon-rain.webp" alt="" />
-            <div>
-              <span>20&deg;</span>
-              <span>14&deg;</span>
-            </div>
-          </article>
-          <article>
-            <h3>Tue</h3>
-            <img src="images/icon-rain.webp" alt="" />
-            <div>
-              <span>20&deg;</span>
-              <span>14&deg;</span>
-            </div>
-          </article>
+          <blockquote className="header">Daily forecast</blockquote>
+          <blockquote>
+            <article>
+              <h3>Tue</h3>
+              <img src="images/icon-rain.webp" alt="" />
+              <div>
+                <span>20&deg;</span>
+                <span>14&deg;</span>
+              </div>
+            </article>
+            <article>
+              <h3>Tue</h3>
+              <img src="images/icon-rain.webp" alt="" />
+              <div>
+                <span>20&deg;</span>
+                <span>14&deg;</span>
+              </div>
+            </article>
+            <article>
+              <h3>Tue</h3>
+              <img src="images/icon-rain.webp" alt="" />
+              <div>
+                <span>20&deg;</span>
+                <span>14&deg;</span>
+              </div>
+            </article>
+            <article>
+              <h3>Tue</h3>
+              <img src="images/icon-rain.webp" alt="" />
+              <div>
+                <span>20&deg;</span>
+                <span>14&deg;</span>
+              </div>
+            </article>
+            <article>
+              <h3>Tue</h3>
+              <img src="images/icon-rain.webp" alt="" />
+              <div>
+                <span>20&deg;</span>
+                <span>14&deg;</span>
+              </div>
+            </article>
+            <article>
+              <h3>Tue</h3>
+              <img src="images/icon-rain.webp" alt="" />
+              <div>
+                <span>20&deg;</span>
+                <span>14&deg;</span>
+              </div>
+            </article>
+            <article>
+              <h3>Tue</h3>
+              <img src="images/icon-rain.webp" alt="" />
+              <div>
+                <span>20&deg;</span>
+                <span>14&deg;</span>
+              </div>
+            </article>
+          </blockquote>
         </section>
         <section className="hourly-forecast">
           <article className="header">
             <h2>Hourly forecast</h2>
-            <div className="dropdown">Tuesday</div>
+            <select className="dropdown">
+              <option value="">Monday</option>
+              <option value="">Monday</option>
+              <option value="">Monday</option>
+              <option value="">Monday</option>
+              <option value="">Monday</option>
+              <option value="">Monday</option>
+              <option value="">Monday</option>
+            </select>
           </article>
           <article className="main">
             <div>

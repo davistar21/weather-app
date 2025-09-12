@@ -1,0 +1,328 @@
+@font-face {
+  font-family: "font-1";
+  src: url(fonts/Bricolage_Grotesque/bricolage-grotesque.ttf);
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 70px;
+}
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  padding: 12px 18px;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  background-color: hsl(243, 23%, 24%);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.dropdown-toggle img {
+  width: 18px;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: hsl(243, 27%, 20%);
+  border: 2px solid hsl(243, 23%, 30%);
+  border-radius: 10px;
+  margin-top: 15px;
+  /* display: none; */
+  width: 180px;
+  z-index: 100;
+  padding: 0 4px;
+  overflow: hidden;
+}
+.dropdown-menu.active {
+  animation: dropDown 0.5s ease-in-out;
+}
+.dropdown-menu.inactive {
+  animation: rollUp forwards 0.5s ease-in-out;
+}
+@keyframes dropDown {
+  from {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes rollUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+}
+.menu-group {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 5px 0;
+}
+
+.menu-group:last-child {
+  border-bottom: none;
+}
+
+.menu-label {
+  padding: 8px;
+  font-size: 12px;
+  color: hsl(240, 6%, 70%);
+}
+
+.menu-item {
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-item:hover {
+  background-color: hsl(243, 23%, 24%);
+}
+
+.menu-item.selected::after {
+  /* content: "✔"; */
+  content: url(/images/icon-checkmark.svg);
+  color: #4fc3f7;
+}
+
+main {
+  padding: 80px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(5, auto);
+}
+main section:nth-child(1),
+main section:nth-child(2) {
+  grid-column: span 3;
+}
+
+main section:nth-child(3),
+main section:nth-child(4),
+main section:nth-child(5) {
+  /* grid-column: span 2; */
+}
+main section:nth-child(6) {
+  /* grid-column: span 1; */
+  /* grid-row: span 3; */
+}
+/* Left side (card, stats, daily) stacked vertically */
+main section.weather-card {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+main section.weather-stats {
+  grid-column: 1 / 2;
+  grid-row: 4 / 5;
+}
+
+main section.daily-forecast {
+  grid-column: 1 / 2;
+  grid-row: 5 / 6;
+}
+
+/* Hourly forecast on the right, spanning all 3 rows vertically */
+main section.hourly-forecast {
+  grid-column: 2 / 3;
+  grid-row: 3 / 6;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.entry-message {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 32px;
+  font-family: "font-1", sans-serif;
+}
+.search-box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.search-box .input-wrapper {
+  padding: 10px 16px;
+  display: flex;
+  gap: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+  align-items: center;
+  background-color: hsl(243, 27%, 20%);
+  max-width: 340px;
+  width: 100%;
+}
+.search-box .input-wrapper img {
+  background: none;
+  width: 16px;
+}
+.search-box .input-wrapper input {
+  all: unset;
+  flex: 1;
+}
+.search-box button {
+  padding: 8px 16px;
+  background-color: hsl(233, 67%, 56%);
+  border-radius: 10px;
+  color: white;
+}
+.weather-card {
+  background: url("/images/icon-sunny.webp") no-repeat top right,
+    url("/images/bg-today-large.svg") no-repeat center center;
+  background-size: 80px 80px, /* size of sun image */ cover; /* size of background image */
+  background-repeat: no-repeat, no-repeat;
+  background-position: top 50% right 30%, center;
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.weather-card div {
+  display: flex;
+  flex-direction: column;
+}
+.weather-card div span {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.weather-card div small {
+  color: hsl(250, 6%, 84%);
+  font-size: 0.8rem;
+}
+.weather-card h4 {
+  font-size: 3.5rem;
+  font-style: italic;
+  font-weight: 600;
+}
+.weather-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.weather-stats div {
+  padding: 16px;
+  display: flex;
+  min-width: 100px;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: hsl(243, 27%, 20%);
+  border-radius: 12px;
+}
+.weather-stats div :nth-child(1) {
+  color: hsl(250, 6%, 84%);
+  font-size: 0.8rem;
+}
+.weather-stats div :nth-child(2) {
+  font-size: 1.7rem;
+  color: hsl(250, 6%, 84%);
+  letter-spacing: 1px;
+}
+.daily-forecast {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.daily-forecast .header {
+  font-weight: 600;
+  color: hsl(250, 6%, 84%);
+}
+.daily-forecast blockquote {
+  display: flex;
+  gap: 10px;
+}
+.daily-forecast blockquote article {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  background-color: hsl(243, 27%, 20%);
+  border-radius: 12px;
+}
+.daily-forecast blockquote article h3 {
+  font-size: 0.9rem;
+  color: hsl(250, 6%, 84%);
+  text-align: center;
+}
+.daily-forecast blockquote article img {
+  width: 48px;
+  display: flex;
+  align-self: center;
+}
+.daily-forecast blockquote article div {
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+}
+.daily-forecast blockquote article div span {
+  color: hsl(250, 6%, 84%);
+}
+.hourly-forecast {
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(243, 27%, 20%);
+  padding: 16px;
+  border-radius: 10px;
+}
+.hourly-forecast .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hourly-forecast .header h2 {
+  font-weight: 600;
+  color: hsl(250, 6%, 84%);
+}
+.hourly-forecast .main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.hourly-forecast .main div {
+  display: flex;
+  flex-direction: row;
+  background-color: hsl(243, 23%, 24%);
+  border: 2px solid hsl(243, 23%, 30%);
+  padding: 5px 10px;
+  border-radius: 10px;
+  align-items: center;
+  gap: 10px;
+}
+.hourly-forecast .main div p {
+  flex: 1;
+  color: hsl(250, 6%, 84%);
+}
+.hourly-forecast .main div span {
+  font-size: 0.9rem;
+  color: hsl(250, 6%, 84%);
+}
+.hourly-forecast .main img {
+  width: 36px;
+}
+select {
+  all: unset;
+}
