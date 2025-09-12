@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "font-1";
+  src: url(fonts/Bricolage_Grotesque/bricolage-grotesque.ttf);
+}
+@font-face {
+  font-family: "font-2";
+  src: url(fonts/DM_Sans/dm-sans-var.ttf);
+}
+* {
+  background-color: hsl(248, 70%, 36%);
+  background-color: hsl(243, 96%, 9%);
+  color: white;
+}
+body {
+  font-family: "font-1", sans-serif;
+}
