@@ -87,6 +87,16 @@ const SearchBox = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
+        {query && (
+          <em
+            className="clear-input"
+            onClick={() => {
+              setQuery("");
+            }}
+          >
+            &times;
+          </em>
+        )}
         {(isSuggestLoading || suggestions.length > 0) && (
           <div className="suggestions-dropdown">
             {isSuggestLoading && (
