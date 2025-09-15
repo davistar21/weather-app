@@ -221,6 +221,13 @@ main section.hourly-forecast {
   gap: 5px;
   flex-direction: column;
 }
+.no-location {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
 .suggestions-dropdown div {
   padding: 8px;
   background-color: hsl(243, 23%, 24%);

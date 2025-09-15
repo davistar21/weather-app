@@ -97,6 +97,14 @@ const SearchBox = () => {
             &times;
           </em>
         )}
+        {query.length >= 3 && !isSuggestLoading && suggestions.length === 0 && (
+          <div className="suggestions-dropdown">
+            <section className="no-location ">
+              <img src="/images/icon-error.svg" alt="" />
+              <span>No location found</span>
+            </section>
+          </div>
+        )}
         {(isSuggestLoading || suggestions.length > 0) && (
           <div className="suggestions-dropdown">
             {isSuggestLoading && (
