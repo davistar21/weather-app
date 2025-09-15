@@ -26,7 +26,10 @@ const WeatherCard = () => {
     <section className="weather-card">
       <img src={`/images/icon-${icon}.webp`} alt="" />
       <div>
-        <span>{location.name}</span>
+        <span>
+          {location.name}, {location.admin1}
+        </span>
+        <span>{location.country}</span>
         <small>{dayjs().tz(timezone).format("dddd, MMM D, YYYY")}</small>
         <small className="time">{dayjs().tz(timezone).format("h:mm A")}</small>
       </div>

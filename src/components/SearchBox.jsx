@@ -66,15 +66,18 @@ const SearchBox = () => {
     setLocation({
       latitude: lat,
       longitude: lon,
-      name: suggestion.name + ", " + suggestion.country,
+      name: suggestion.name,
+      admin1: suggestion.admin1,
+      country: suggestion.country,
     });
     setSuggestions([]);
     setSkipFetch(true);
-    setQuery(
-      `${suggestion.name}, ${
-        suggestion.admin1 ? `${suggestion.admin1},` : ""
-      } ${suggestion.country}`
-    );
+    // setQuery(
+    //   `${suggestion.name}, ${
+    //     suggestion.admin1 ? `${suggestion.admin1},` : ""
+    //   } ${suggestion.country}`
+    // );
+    setQuery("");
   };
 
   return (
