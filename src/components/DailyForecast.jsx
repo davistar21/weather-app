@@ -30,7 +30,6 @@ const DailyForecast = () => {
   ) {
     return <p>No daily forecast available.</p>;
   }
-  console.log(dailyData);
   return (
     <section className="daily-forecast">
       <blockquote className="header">Daily forecast</blockquote>

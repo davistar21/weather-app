@@ -10,8 +10,6 @@ const WeatherCard = () => {
   const { isLoading, error, location, timezone, currentStats } = useWeather();
   const { time, temp, weatherCode } = currentStats;
   const icon = getWeatherIcon(weatherCode);
-  console.log("Raw time:");
-  console.log("Formatted:", dayjs().tz(timezone).format());
 
   if (isLoading)
     return (

@@ -1,6 +1,6 @@
 @font-face {
   font-family: "font-1";
-  src: url(fonts/Bricolage_Grotesque/bricolage-grotesque.ttf);
+  src: url(../public/fonts/Bricolage_Grotesque/bricolage-grotesque.ttf);
 }
 header {
   display: flex;
@@ -21,6 +21,7 @@ header {
   background-color: hsl(243, 23%, 24%);
   font-size: 1.1rem;
   cursor: pointer;
+  align-items: center;
 }
 .dropdown-toggle img {
   width: 18px;

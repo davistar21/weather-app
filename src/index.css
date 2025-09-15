@@ -1,10 +1,10 @@
 @font-face {
   font-family: "font-1";
-  src: url(fonts/Bricolage_Grotesque/bricolage-grotesque.ttf);
+  src: url(../public/fonts/Bricolage_Grotesque/bricolage-grotesque.ttf);
 }
 @font-face {
   font-family: "font-2";
-  src: url(fonts/DM_Sans/dm-sans-var.ttf);
+  src: url(../public/fonts/DM_Sans/dm-sans-var.ttf);
 }
 * {
   color: white;
