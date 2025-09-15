@@ -2,6 +2,9 @@
   font-family: "font-1";
   src: url(../public/fonts/Bricolage_Grotesque/bricolage-grotesque.ttf);
 }
+button {
+  all: unset;
+}
 header {
   display: flex;
   justify-content: space-between;
@@ -185,9 +188,11 @@ main section.hourly-forecast {
 .search-box button {
   padding: 8px 16px;
   background-color: hsl(233, 67%, 56%);
-  border: 2px solid transparent;
   border-radius: 10px;
   color: white;
+  display: flex;
+  align-items: center;
+  border: 2px solid hsl(243, 27%, 20%);
 }
 .suggestions-dropdown {
   position: absolute;
@@ -433,6 +438,15 @@ select {
   }
   header {
     padding: 30px 10px;
+  }
+  .search-box {
+    flex-direction: column;
+  }
+
+  .search-box button {
+    justify-content: center;
+    max-width: 340px;
+    width: 100%;
   }
   .suggestions-dropdown {
     top: unset;
