@@ -61,7 +61,6 @@ const SearchBox = () => {
   }, [query]);
 
   const handleSelect = async (suggestion) => {
-    // suggestion has fields like latitude, longitude, name
     const lat = suggestion.latitude;
     const lon = suggestion.longitude;
     setLocation({
@@ -69,22 +68,6 @@ const SearchBox = () => {
       longitude: lon,
       name: suggestion.name + ", " + suggestion.country,
     });
-    // 2. Fetch timezone info
-    try {
-      const res = await fetch(
-        `https://api.open-meteo.com/v1/timezone?latitude=${lat}&longitude=${lon}`
-      );
-      const data = await res.json();
-
-      if (data && data.timezone) {
-        setTimezone(data.timezone); // e.g., "Africa/Lagos"
-      }
-    } catch (err) {
-      console.error("Failed to fetch timezone:", err);
-      // Fallback to browser timezone or default
-      setTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone);
-    }
-
     setSuggestions([]);
     setSkipFetch(true);
     setQuery(

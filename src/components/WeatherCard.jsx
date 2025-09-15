@@ -8,9 +8,9 @@ dayjs.extend(utc);
 dayjs.extend(timezonePlugin);
 const WeatherCard = () => {
   const { isLoading, error, location, timezone, currentStats } = useWeather();
-  const { time, temp, weatherCode } = currentStats;
+  const { temp, weatherCode } = currentStats;
   const icon = getWeatherIcon(weatherCode);
-
+  // console.log(dayjs().tz("Asia/Tokyo").format());
   if (isLoading)
     return (
       <section className="weather-card-loader">

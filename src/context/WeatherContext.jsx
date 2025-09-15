@@ -45,7 +45,7 @@ export const WeatherProvider = ({ children }) => {
       hourly:
         "temperature_2m,apparent_temperature,relative_humidity_2m,windspeed_10m,precipitation,weathercode",
       daily: "temperature_2m_max,temperature_2m_min,weathercode",
-      timezone,
+      timezone: "auto",
       start_date,
       end_date,
     };
