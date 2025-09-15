@@ -37,13 +37,14 @@ header {
   width: 180px;
   z-index: 100;
   padding: 0 4px;
-  overflow: hidden;
+  pointer-events: none;
 }
 .dropdown-menu.active {
-  animation: dropDown 0.5s ease-in-out;
+  animation: dropDown 0.3s ease-in-out;
+  pointer-events: all;
 }
 .dropdown-menu.inactive {
-  animation: rollUp forwards 0.5s ease-in-out;
+  animation: rollUp forwards 0.3s ease-in-out;
 }
 @keyframes dropDown {
   from {
@@ -161,6 +162,7 @@ main section.hourly-forecast {
   margin-bottom: 24px;
 }
 .search-box .input-wrapper {
+  position: relative;
   padding: 10px 16px;
   display: flex;
   gap: 10px;
@@ -186,19 +188,95 @@ main section.hourly-forecast {
   border-radius: 10px;
   color: white;
 }
+.suggestions-dropdown {
+  position: absolute;
+  background-color: hsl(243, 27%, 20%);
+  border: 1px solid hsl(243, 23%, 30%);
+  border-radius: 8px;
+  width: inherit;
+  z-index: 10;
+  top: 50px;
+  left: 0;
+  font-size: 0.9rem;
+  padding: 6px;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+.suggestions-dropdown div {
+  padding: 8px;
+  background-color: hsl(243, 23%, 24%);
+  border-radius: 8px;
+  cursor: pointer;
+}
 .weather-card {
-  background: url("/images/icon-sunny.webp") no-repeat top right,
-    url("/images/bg-today-large.svg") no-repeat center center;
-  background-size: 80px 80px, /* size of sun image */ cover; /* size of background image */
-  background-repeat: no-repeat, no-repeat;
-  background-position: top 50% right 30%, center;
+  background: url("/images/bg-today-large.svg") no-repeat center center;
+  background-size: cover; /* size of background image */
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 12px;
   padding: 1.5rem;
   color: #fff;
   min-height: 180px;
   display: flex;
   align-items: center;
+  position: relative;
   justify-content: space-between;
+}
+.weather-card img {
+  position: absolute;
+  width: 80px;
+  /* inset: 0; */
+  right: 30%;
+}
+.weather-card-loader {
+  border-radius: 12px;
+  padding: 10px 0;
+  display: flex;
+  min-height: 180px;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  background-color: hsl(243, 27%, 20%);
+  justify-content: center;
+  font-size: 0.8rem;
+}
+.search-loader {
+  min-height: unset;
+}
+.weather-card-loader div {
+  display: flex;
+  gap: 8px;
+}
+.weather-card-loader div hr {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: hsl(250, 6%, 84%);
+  animation: bounce 1s infinite ease;
+}
+.weather-card-loader div hr:nth-child(1) {
+  animation-delay: 0s;
+}
+.weather-card-loader div hr:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.weather-card-loader div hr:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.weather-card-loader span {
+  color: hsl(250, 6%, 84%);
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.2);
+    opacity: 0.7;
+  }
 }
 .weather-card div {
   display: flex;
@@ -220,12 +298,14 @@ main section.hourly-forecast {
 .weather-stats {
   display: flex;
   gap: 16px;
-  flex-wrap: wrap;
+  overflow: scroll;
+  scrollbar-width: none;
+  scroll-snap-align: left;
 }
 .weather-stats div {
   padding: 16px;
   display: flex;
-  min-width: 100px;
+  min-width: 150px;
   flex: 1;
   flex-direction: column;
   justify-content: space-between;
@@ -257,6 +337,9 @@ blockquote {
 .daily-forecast blockquote {
   display: flex;
   gap: 10px;
+  overflow: scroll;
+  scroll-snap-align: left;
+  scrollbar-width: none;
 }
 .daily-forecast blockquote article {
   padding: 8px;
@@ -266,6 +349,8 @@ blockquote {
   flex: 1;
   background-color: hsl(243, 27%, 20%);
   border-radius: 12px;
+  min-width: 80px;
+  min-height: 130px;
 }
 .daily-forecast blockquote article h3 {
   font-size: 0.9rem;
@@ -291,6 +376,7 @@ blockquote {
   background-color: hsl(243, 27%, 20%);
   padding: 16px;
   border-radius: 10px;
+  gap: 10px;
 }
 .hourly-forecast .header {
   display: flex;
@@ -298,6 +384,7 @@ blockquote {
   justify-content: space-between;
 }
 .hourly-forecast .header h2 {
+  all: unset;
   font-weight: 600;
   color: hsl(250, 6%, 84%);
 }
@@ -312,6 +399,7 @@ blockquote {
   background-color: hsl(243, 23%, 24%);
   border: 2px solid hsl(243, 23%, 30%);
   padding: 5px 10px;
+  min-height: 49px;
   border-radius: 10px;
   align-items: center;
   gap: 10px;
@@ -329,4 +417,27 @@ blockquote {
 }
 select {
   all: unset;
+}
+@media (max-width: 1024px) {
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+  .daily-forecast blockquote {
+  }
+}
+@media (max-width: 768px) {
+  main {
+    padding: 10px;
+  }
+  header {
+    padding: 30px 10px;
+  }
+  .suggestions-dropdown {
+    top: unset;
+    bottom: 60px;
+    flex-direction: column-reverse;
+  }
+  .weather-card-loader {
+  }
 }

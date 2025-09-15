@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "dayjs": "^1.11.18",
+    "lodash.debounce": "^4.0.8",
+    "openmeteo": "^1.2.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },

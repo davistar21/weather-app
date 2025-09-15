@@ -1,12 +1,13 @@
 import Header from "./components/Header";
 import Main from "./components/Main";
+import { WeatherProvider } from "./context/WeatherContext";
 
 const App = () => {
   return (
-    <div>
+    <WeatherProvider>
       <Header />
       <Main />
-    </div>
+    </WeatherProvider>
   );
 };
 

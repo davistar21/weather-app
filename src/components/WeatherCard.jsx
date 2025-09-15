@@ -1,11 +1,38 @@
-const WeatherCard = (props) => {
+import dayjs from "dayjs";
+import { useWeather } from "../context/WeatherContext";
+import { getWeatherIcon } from "../utils/weatherCodeIcon";
+import utc from "dayjs/plugin/utc";
+import timezonePlugin from "dayjs/plugin/timezone";
+
+dayjs.extend(utc);
+dayjs.extend(timezonePlugin);
+const WeatherCard = () => {
+  const { isLoading, error, location, timezone, currentStats } = useWeather();
+  const { time, temp, weatherCode } = currentStats;
+  const icon = getWeatherIcon(weatherCode);
+  console.log("Raw time:");
+  console.log("Formatted:", dayjs().tz(timezone).format());
+
+  if (isLoading)
+    return (
+      <section className="weather-card-loader">
+        <div>
+          <hr />
+          <hr />
+          <hr />
+        </div>
+        <span>Loading...</span>
+      </section>
+    );
   return (
     <section className="weather-card">
+      <img src={`/images/icon-${icon}.webp`} alt="" />
       <div>
-        <span>Berlin, Germany</span>
-        <small>Tuesday, Aug 5, 2025</small>
+        <span>{location.name}</span>
+        <small>{dayjs().tz(timezone).format("dddd, MMM D, YYYY")}</small>
+        <small className="time">{dayjs().tz(timezone).format("h:mm A")}</small>
       </div>
-      <h4 className="temp">20&deg;</h4>
+      <h4 className="temp">{Math.round(temp)}&deg;</h4>
     </section>
   );
 };
